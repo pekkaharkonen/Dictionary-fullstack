@@ -1,6 +1,6 @@
 body {
-  background: #cfdcf1;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f4f4;
 }
 
 .container {
@@ -44,3 +44,21 @@ input {
   border-radius: 0.2rem;
   margin: 0.5rem;
 }
+span {
+  padding: 0.5rem;
+  color: darkblue;
+  font-weight: bold;
+}
+
+.similar:hover {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.similar-words {
+  margin: 3rem;
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+
+

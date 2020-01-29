@@ -10,4 +10,12 @@ router.route("/:word").get(async (req, res, next) => {
 
 });
 
+router.route("/:word/triggers").get(async (req, res, next) => {
+  let word = req.params.word;
+
+  const response = await fetch(`https://api.datamuse.com/words?sp=${word}`)
+  const data = await response.json();
+  res.send(data)
+})
+
 module.exports = router;

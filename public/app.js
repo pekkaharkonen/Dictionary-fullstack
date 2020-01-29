@@ -4,22 +4,42 @@ const results = document.getElementById("results");
 
 button.addEventListener("click", getWord);
 
-function getWord(e) {
+function newSearch(param) {
+  getWord(param);
+}
+
+document.body.addEventListener("click", function(event) {
+  if (event.target.id == "newSubmit") {
+    newSearch(event.target.innerText);
+  }
+});
+
+function getWord(uusi) {
   results.innerHTML = "";
-  e.preventDefault();
+  console.log(uusi);
 
   let trimmed = word.value.trim();
   let input = trimmed.replace(/[\s]+/, "-");
 
-  fetch(`http://localhost:3000/api/words/${input}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      createBox(data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  if (typeof uusi === 'string') {
+    fetch(`http://localhost:3000/api/words/${uusi}`)
+      .then(response => response.json())
+      .then(data => {
+        createBox(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  } else {
+    fetch(`http://localhost:3000/api/words/${input}`)
+      .then(response => response.json())
+      .then(data => {
+        createBox(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 }
 
 function createBox(data) {

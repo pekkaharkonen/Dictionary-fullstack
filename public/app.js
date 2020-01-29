@@ -8,8 +8,8 @@ function getWord(e) {
   results.innerHTML = "";
   e.preventDefault();
 
-  let trimmed = (word.value).trim();
-  let input = trimmed.replace(/[\s]+/, "-")
+  let trimmed = word.value.trim();
+  let input = trimmed.replace(/[\s]+/, "-");
 
   fetch(`http://localhost:3000/api/words/${input}`)
     .then(response => response.json())
@@ -30,8 +30,6 @@ function createBox(data) {
 
     let box = addContent(newBox, data[i]);
 
-    // newBox.innerHTML = `<p>${JSON.stringify(data)}</p>`
-
     results.appendChild(box);
   }
 }
@@ -45,12 +43,12 @@ function addContent(box, data) {
 
   //Phonetic as a p-element
   let phonetic = document.createElement("p");
-  if(data.phonetic){
+  if (data.phonetic) {
     phonetic.innerHTML = `<i>${data.phonetic}</i>`;
-  }else {
-    phonetic.innerHTML = `<i>I know alot, but I have no idea how to pronounce ${data.word}</i>`
+  } else {
+    phonetic.innerHTML = `<i>I know alot, but I have no idea how to pronounce ${data.word}</i>`;
   }
-  
+
   box.appendChild(phonetic);
 
   //meanings:
@@ -65,21 +63,21 @@ function addContent(box, data) {
 
       if (item["definition"]) {
         let definition = document.createElement("div");
-        definition.classList.add('secondary-content')
+        definition.classList.add("secondary-content");
         definition.innerHTML = "Definition: " + item["definition"];
         noun.appendChild(definition);
       }
 
       if (item["example"]) {
         let example = document.createElement("div");
-        example.classList.add('secondary-content')
+        example.classList.add("secondary-content");
         example.innerHTML = "Example: " + item["example"];
         noun.appendChild(example);
       }
 
       if (item["synonyms"]) {
         let synonyms = document.createElement("div");
-        synonyms.classList.add('secondary-content')
+        synonyms.classList.add("secondary-content");
         synonyms.innerHTML = "Synonyms: " + item["synonyms"];
         noun.appendChild(synonyms);
       }
@@ -94,21 +92,21 @@ function addContent(box, data) {
 
       if (item["definition"]) {
         let definition = document.createElement("div");
-        definition.classList.add('secondary-content')
+        definition.classList.add("secondary-content");
         definition.innerHTML = "Definition: " + item["definition"];
         exclamation.appendChild(definition);
       }
 
       if (item["example"]) {
         let example = document.createElement("div");
-        example.classList.add('secondary-content')
+        example.classList.add("secondary-content");
         example.innerHTML = "Example: " + item["example"];
         exclamation.appendChild(example);
       }
 
       if (item["synonyms"]) {
         let synonyms = document.createElement("div");
-        synonyms.classList.add('secondary-content')
+        synonyms.classList.add("secondary-content");
         synonyms.innerHTML = "Synonyms: " + item["synonyms"];
         exclamation.appendChild(synonyms);
       }
@@ -123,21 +121,21 @@ function addContent(box, data) {
 
       if (item["definition"]) {
         let definition = document.createElement("div");
-        definition.classList.add('secondary-content')
+        definition.classList.add("secondary-content");
         definition.innerHTML = "Definition: " + item["definition"];
         abbreviation.appendChild(definition);
       }
 
       if (item["example"]) {
         let example = document.createElement("div");
-        example.classList.add('secondary-content')
+        example.classList.add("secondary-content");
         example.innerHTML = "Example: " + item["example"];
         abbreviation.appendChild(example);
       }
 
       if (item["synonyms"]) {
         let synonyms = document.createElement("div");
-        synonyms.classList.add('secondary-content')
+        synonyms.classList.add("secondary-content");
         synonyms.innerHTML = "Synonyms: " + item["synonyms"];
         abbreviation.appendChild(synonyms);
       }
@@ -152,29 +150,27 @@ function addContent(box, data) {
 
       if (item["definition"]) {
         let definition = document.createElement("div");
-        definition.classList.add('secondary-content')
+        definition.classList.add("secondary-content");
         definition.innerHTML = "Definition: " + item["definition"];
         transitive.appendChild(definition);
       }
 
       if (item["example"]) {
         let example = document.createElement("div");
-        example.classList.add('secondary-content')
+        example.classList.add("secondary-content");
         example.innerHTML = "Example: " + item["example"];
         transitive.appendChild(example);
       }
 
       if (item["synonyms"]) {
         let synonyms = document.createElement("div");
-        synonyms.classList.add('secondary-content')
+        synonyms.classList.add("secondary-content");
         synonyms.innerHTML = "Synonyms: " + item["synonyms"];
         transitive.appendChild(synonyms);
       }
       box.appendChild(transitive);
     }
   }
-
-
 
   return box;
 }
